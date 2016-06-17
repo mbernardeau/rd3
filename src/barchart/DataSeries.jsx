@@ -20,6 +20,10 @@ module.exports = React.createClass({
     hoverAnimation: React.PropTypes.any, // TODO: prop types?
     xScale: React.PropTypes.any,
     yScale: React.PropTypes.any,
+    strokeColorAccessor: React.PropTypes.func,
+    strokeWidthAccessor: React.PropTypes.func,
+    strokeOpacityAccessor: React.PropTypes.func,
+    fillOpacityAccessor: React.PropTypes.func,
   },
 
   _renderBarSeries() {
@@ -30,7 +34,18 @@ module.exports = React.createClass({
   },
 
   _renderBarContainer(segment, seriesIdx) {
-    const { colors, colorAccessor, hoverAnimation, xScale, yScale } = this.props;
+    const {
+      colors,
+      colorAccessor,
+      hoverAnimation,
+      xScale,
+      yScale,
+      strokeColorAccessor,
+      strokeWidthAccessor,
+      strokeOpacityAccessor,
+      fillOpacityAccessor,
+    } = this.props;
+
     const barHeight = Math.abs(yScale(0) - yScale(segment.y));
     const y = yScale(segment.y0 + segment.y);
     return (
@@ -40,6 +55,10 @@ module.exports = React.createClass({
         x={xScale(segment.x)}
         y={(segment.y >= 0) ? y : y - barHeight}
         fill={colors(colorAccessor(segment, seriesIdx))}
+        fillOpacity={fillOpacityAccessor(segment, seriesIdx)}
+        stroke={colors(strokeColorAccessor(segment, seriesIdx))}
+        strokeWidth={strokeWidthAccessor(segment, seriesIdx)}
+        strokeOpacity={strokeOpacityAccessor(segment, seriesIdx)}
         hoverAnimation={hoverAnimation}
         onMouseOver={this.props.onMouseOver}
         onMouseLeave={this.props.onMouseLeave}

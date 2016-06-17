@@ -47,6 +47,10 @@ module.exports = React.createClass({
       xAxisClassName: 'rd3-barchart-xaxis',
       yAxisClassName: 'rd3-barchart-yaxis',
       yAxisTickCount: 4,
+      strokeColorAccessor: (d, idx) => idx,
+      strokeWidthAccessor: (d, idx) => 0,
+      strokeOpacityAccessor: (d, idx) => 1,
+      fillOpacityAccessor: (d, idx) => 1,
     };
   },
 
@@ -173,6 +177,10 @@ module.exports = React.createClass({
               height={innerHeight}
               colors={props.colors}
               colorAccessor={props.colorAccessor}
+              strokeColorAccessor={props.strokeColorAccessor}
+              strokeWidthAccessor={props.strokeWidthAccessor}
+              strokeOpacityAccessor={props.strokeOpacityAccessor}
+              fillOpacityAccessor={props.fillOpacityAccessor}
               hoverAnimation={props.hoverAnimation}
               valuesAccessor={props.valuesAccessor}
               onMouseOver={this.onMouseOver}
