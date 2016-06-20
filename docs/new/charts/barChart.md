@@ -29,3 +29,7 @@ yAxisClassName | string | `'rd3-barchart-yaxis'` |
 yAxisTickCount | number | `4` |
 xAccessor | any |  |
 yAccessor | any |  |
+strokeColorAccessor | func | `(d, idx) => idx` | **d** is the datum being operated on, and **idx** is the index in the array of datums. The returned value is used with the `colors` props. |
+strokeWidthAccessor | func | `(d, idx) => 0` | **d** is the datum being operated on, and **idx** is the index in the array of datums. Specify the width of the stroke. |
+strokeOpacityAccessor | `func` | `(d, idx) => 1` | **d** is the datum being operated on, and **idx** is the index in the array of datums. Specify the opacity of the stroke. |
+fillOpacityAccessor | `func` | `(d, idx) => 1` | **d** is the datum being operated on, and **idx** is the index in the array of datums. Specify the opacity of the fill. |
