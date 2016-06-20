@@ -1,6 +1,6 @@
 {
-  "name": "rd3",
-  "version": "0.6.3",
+  "name": "rd3_poc_mb",
+  "version": "0.6.4",
   "description": "ReactJS charts using d3",
   "author": "Lim Yang Wei",
   "homepage": "https://reactiva.github.io/react-d3-website/",
@@ -93,7 +93,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yang-wei/rd3.git"
+    "url": "https://github.com/mbernardeau/rd3.git"
   },
   "files": [
     "build"
