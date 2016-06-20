@@ -46,18 +46,20 @@ module.exports = React.createClass({
       fillOpacityAccessor,
     } = this.props;
 
+    const strokeWidth = strokeWidthAccessor(segment, seriesIdx);
     const barHeight = Math.abs(yScale(0) - yScale(segment.y));
     const y = yScale(segment.y0 + segment.y);
+
     return (
       <BarContainer
         height={barHeight}
-        width={xScale.rangeBand()}
-        x={xScale(segment.x)}
+        width={xScale.rangeBand() - strokeWidth} // Reduce width by the stroke width as it's added around the rectangle
+        x={xScale(segment.x) + strokeWidth / 2} // and move the rectangle by half the size of the stroke to recenter it
         y={(segment.y >= 0) ? y : y - barHeight}
         fill={colors(colorAccessor(segment, seriesIdx))}
         fillOpacity={fillOpacityAccessor(segment, seriesIdx)}
         stroke={colors(strokeColorAccessor(segment, seriesIdx))}
-        strokeWidth={strokeWidthAccessor(segment, seriesIdx)}
+        strokeWidth={strokeWidth}
         strokeOpacity={strokeOpacityAccessor(segment, seriesIdx)}
         hoverAnimation={hoverAnimation}
         onMouseOver={this.props.onMouseOver}
