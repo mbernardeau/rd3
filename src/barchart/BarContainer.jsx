@@ -10,6 +10,7 @@ module.exports = React.createClass({
 
   propTypes: {
     fill: React.PropTypes.string,
+    stroke: React.PropTypes.string,
     onMouseOver: React.PropTypes.func,
     onMouseLeave: React.PropTypes.func,
     dataPoint: React.PropTypes.any, // TODO: prop types?
@@ -26,6 +27,7 @@ module.exports = React.createClass({
       // fill is named as fill instead of initialFill to avoid
       // confusion when passing down props from top parent
       fill: this.props.fill,
+      stroke: this.props.stroke,
     };
   },
 
@@ -34,6 +36,7 @@ module.exports = React.createClass({
     this.props.onMouseOver.call(this, rect.right, rect.top, this.props.dataPoint);
     this.setState({
       fill: shade(this.props.fill, 0.2),
+      stroke: shade(this.props.stroke, 0.2),
     });
   },
 
@@ -41,6 +44,7 @@ module.exports = React.createClass({
     this.props.onMouseLeave.call(this);
     this.setState({
       fill: this.props.fill,
+      stroke: this.props.stroke,
     });
   },
 
@@ -51,6 +55,7 @@ module.exports = React.createClass({
       <Bar
         {...props}
         fill={this.state.fill}
+        stroke={this.state.stroke}
         handleMouseOver={props.hoverAnimation ? this._animateBar : null}
         handleMouseLeave={props.hoverAnimation ? this._restoreBar : null}
       />
