@@ -48,7 +48,13 @@ module.exports = React.createClass({
 
     const strokeWidth = strokeWidthAccessor(segment, seriesIdx);
     const barHeight = Math.abs(yScale(0) - yScale(segment.y));
-    const y = yScale(segment.y0 + segment.y);
+
+    // Calculate padding to compoensate for size of stroke
+    let yPad = 0;
+    for (let i = 0; i < seriesIdx; i++) {
+      yPad += strokeWidthAccessor(segment, i);
+    }
+    const y = yScale(segment.y0 + segment.y) - Math.floor(yPad / 2);
 
     return (
       <BarContainer
