@@ -16,6 +16,7 @@ module.exports = React.createClass({
     margins: React.PropTypes.object,
     text: React.PropTypes.string,
     width: React.PropTypes.number.isRequired,
+    listStyleType: React.PropTypes.func,
   },
 
   getDefaultProps() {
@@ -25,6 +26,7 @@ module.exports = React.createClass({
       colorAccessor: (d, idx) => idx,
       itemClassName: 'rd3-legend-item',
       text: '#000',
+      listStyleType: () => 'disc',
     };
   },
 
@@ -44,6 +46,7 @@ module.exports = React.createClass({
         color: props.colors(props.colorAccessor(series, idx)),
         lineHeight: '60%',
         fontSize: '200%',
+        listStyleType: props.listStyleType(series, idx),
       };
 
       legendItems.push(

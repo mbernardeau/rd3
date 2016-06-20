@@ -128,6 +128,7 @@ module.exports = React.createClass({
           height={props.height}
           title={props.title}
           shouldUpdate={!this.state.changeState}
+          legendListStyleType={props.legendListStyleType}
         >
           <g transform={trans} className={props.chartClassName}>
             <YAxis

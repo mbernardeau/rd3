@@ -17,6 +17,7 @@ module.exports = React.createClass({
     height: React.PropTypes.node,
     legend: React.PropTypes.bool,
     legendPosition: React.PropTypes.string,
+    legendListStyleType: React.PropTypes.func,
     margins: React.PropTypes.object,
     sideOffset: React.PropTypes.number,
     svgClassName: React.PropTypes.string,
@@ -53,6 +54,7 @@ module.exports = React.createClass({
           legendPosition={props.legendPosition}
           margins={props.margins}
           width={props.sideOffset}
+          listStyleType={props.legendListStyleType}
         />
       );
     }
